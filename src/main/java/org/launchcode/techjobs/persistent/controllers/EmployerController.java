@@ -17,7 +17,7 @@ import java.util.Optional;
 public class EmployerController {
 //Third Test Commit
 
-    
+
     @Autowired
     private EmployerRepository employerRepository;
 
@@ -25,13 +25,15 @@ public class EmployerController {
     private JobRepository jobRepository;
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
+        model.addAttribute("title", "Add Employer");
         model.addAttribute(new Employer());
         return "employers/add";
     }
     @GetMapping("add")
     public String displayAllEmployerForm(Model model) {
-        model.addAttribute(new Employer());
-        return "employers/add";
+        model.addAttribute("title", "All Employers");
+        model.addAttribute("employers", employerRepository.findAll());
+        return "employers/index";
 
 
     }
@@ -40,9 +42,11 @@ public class EmployerController {
                                     Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("title", "Add Employer");
             return "employers/add";
         }
-
+        employerRepository.save(newEmployer);
+        model.addAttribute("employer", employerRepository.findAll());
         return "redirect:";
     }
 

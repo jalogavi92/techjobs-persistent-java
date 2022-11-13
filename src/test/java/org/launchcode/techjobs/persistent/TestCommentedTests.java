@@ -20,7 +20,7 @@ public class TestCommentedTests extends AbstractTest {
     public void testTaskThreeTestNumber () throws ClassNotFoundException {
         Class testTaskThreeClass = getClassByName("TestTaskThree");
         int numTests = testTaskThreeClass.getMethods().length;
-        assertEquals(16, numTests);
+        assertEquals(15, numTests);
     }
 
     @Test

@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -18,16 +19,21 @@ public class SkillController {
     @Autowired
     private SkillRepository skillRepository;
 
-    @GetMapping
-    public String displayAllSkills(Model model) {
-        //model.addAttribute("title", "All Skills");
-        model.addAttribute("skills", skillRepository.findAll());
+    @GetMapping("")    public String index(Model model){
+        model.addAttribute("title","All Skills");
+        model.addAttribute("skills",skillRepository.findAll());
         return "skills/index";
     }
+//    @GetMapping
+//    public String displayAllSkills(Model model) {
+//        //model.addAttribute("title", "All Skills");
+//        model.addAttribute("skills", skillRepository.findAll());
+//        return "skills/index";
+//    }
 
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {
-        //model.addAttribute("title", "Add Skill");
+        model.addAttribute("title", "Add Skill");
         model.addAttribute(new Skill());
         return "skills/add";
     }

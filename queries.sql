@@ -1,11 +1,12 @@
 -- Part 1: Test it with SQL
   -- list the columns and their data types in the table as a SQL comment.
-    id int
-    employer VARCHAR(255)
-    name VARCHAR(255)
-    skills VARCHAR(255)
+'id', 'int', 'NO', 'PRI', NULL, ''
+'employer', 'varchar(255)', 'YES', '', NULL, ''
+'name', 'varchar(255)', 'YES', '', NULL, ''
+'skills', 'varchar(255)', 'YES', '', NULL, ''
+'employer_id', 'int', 'YES', 'MUL', NULL, ''
 -- Part 2: Test it with SQL
-    SELECT employer.name
+    SELECT name
     FROM employer
     WHERE employer.location = "St. Louis City";
 -- Part 3: Test it with SQL
